@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Analyse des systèmes éducatifs
+### Structure et progression du cours
+
+Nathanaël Friant
+
+Université libre de Bruxelles
+
+2024-2025
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Notre progression dans la compréhension des systèmes éducatifs
+
+- Ce cours s'est structuré comme une exploration progressive qui vous permet de :
+	- **Comprendre** les systèmes éducatifs comme des systèmes complexes
+	- **Analyser** les phénomènes éducatifs à différents niveaux
+	- **Utiliser des modélisations** des dynamiques qui produisent les inégalités éducatives
+
+<aside class="notes"><p>Un objectif important du cours est de développer une compréhension plus intégrée de tout ce qu&#39;on peut nommer un &quot;système&quot; en éducation.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quatre phases
+
+1. Introduction
+2. Modélisation individus-centrée
+3. Etudier les inégalités grâce à cette approche
+4. Intégration par l'utilisation d'une modélisation de la ségrégation scolaire
+
+<aside class="notes"><p>Les trois phases du cours se sont enchaînées, mais de nombreuses connexions existent entre elles. Chaque phase apporte des éléments essentiels à votre compréhension globale.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Phase 1: Introduction
+
+- **Séance 1**: Introduction aux systèmes complexes
+	- Distinction entre systèmes compliqués et systèmes complexes
+	- Analyse multi-niveaux
+	- Cadres micro-méso-macro
+- **Séance 2**: Ségrégation scolaire et quasi-marché
+	- Quasi-marchés scolaires
+	- Influences sur les familles et sur les établissements
+	- Première rencontre avec un modèle de ségrégation scolaire
+
+
+<aside class="notes"><p>Ces premières séances posent les bases conceptuelles nécessaires pour appréhender les systèmes éducatifs comme des systèmes complexes, et pour étudier la ségrégation scolaire en Belgique francophone.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Phase 2: Modélisation individus-centrée
+
+- **Séance 3**: Simulation vécue de choix scolaires
+- **Séance 4**: Principes de la modélisation multi-agents (des comportements aux phénomènes)
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Phase 3: Etudier les inégalités grâce à cette approche
+- **Séance 5** : Des phénomènes macro aux comportements micro (des inégalités aux mécanismes)
+	- Ségrégation: ampleur et comportements individuels sous-jacents
+	- Parcours différenciés et orientation scolaire
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Phase 3 (suite)
+- **Séance 6** : Des phénomènes macro aux comportements micro (2)
+	- Quasi-marché
+	- Redoublement
+	- Inégalités liées à l'origine migratoire
+- **Séance 7** : Inégalités de genre dans l'éducation
+- **Séance 8**: Politiques de lutte contre les inégalités
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Phase 4: Intégration par l'utilisation d'une modélisation de la ségrégation scolaire
+
+- **Séance 9**: Présentation du modèle NetLogo de ségrégation scolaire
+- **Séance 10-11**: Cycle prédiction-vérification-explication
+  - Formulation de prédictions avant simulation
+  - Vérification par exploration systématique
+  - Explication des mécanismes sous-jacents
+
+<aside class="notes"><p>Cette phase finale mobilise la modélisation multi-agents pour intégrer votre compréhension et développer une pensée systémique.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Structure des séances 10-11
+
+
+1. **Activation des connaissances préalables** (Wooclap)
+2. **Prédictions structurées** (tableaux de prédiction)
+3. **Observation systématique** (exploration du modèle)
+4. **Comparaison prédictions-observations** (surprises)
+5. **Construction de schémas causaux** (mécanismes)
+6. **Réflexion métacognitive** (évolution de la compréhension)
+
+<aside class="notes"><p>Cette structure est pensée dans l&#39;objectif de faciliter la transformation de vos connaissances intuitives en modèles mentaux plus cohérents et systématiques.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Pourquoi cette approche?
+
+- Rendre **accessible** la complexité des systèmes éducatifs
+- Connecter les phénomènes **macro** aux processus **micro**
+- Développer une **pensée critique** sur les interventions éducatives
+- Comprendre les inégalités comme des **phénomènes émergents**
+- Acquérir des **outils d'analyse** transférables à d'autres systèmes
+
+<aside class="notes"><p>L&#39;objectif de cette approche est de vous équiper d&#39;outils intellectuels  pour votre future pratique professionnelle, que ce soit en psychologie ou en sciences de l&#39;éducation.</p>
+</div></aside></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
